@@ -1,0 +1,73 @@
+Error: There is no route defined for key key0.
+Must be one of: 'key1'
+
+This error is located at:
+    in CardStack (at CardStackTransitioner.js:67)
+    in RCTView (at View.js:60)
+    in View (at Transitioner.js:142)
+    in Transitioner (at CardStackTransitioner.js:19)
+    in CardStackTransitioner (at StackNavigator.js:41)
+    in Unknown (at createNavigator.js:13)
+    in Navigator (at createNavigationContainer.js:226)
+    in NavigationContainer (at Router.js:72)
+    in App (at Router.js:93)
+    in Router (at router.js:25)
+    in RouteMap (at App.js:7)
+    in App (at renderApplication.js:33)
+    in RCTView (at View.js:60)
+    in View (at AppContainer.js:102)
+    in RCTView (at View.js:60)
+    in View (at AppContainer.js:122)
+    in AppContainer (at renderApplication.js:32)
+getScreenForRouteName
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native-router-flux\node_modules\react-navigation\src\routers\getScreenForRouteName.js:12:6
+<unknown>
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native-router-flux\node_modules\react-navigation\src\routers\createConfigGetter.js:39:42
+<unknown>
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native-router-flux\node_modules\react-navigation\src\routers\createConfigGetter.js:60:43
+_getScreenDetails
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native-router-flux\node_modules\react-navigation\src\views\CardStack\CardStack.js:138:41
+render
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native-router-flux\node_modules\react-navigation\src\views\CardStack\CardStack.js:272:47
+proxiedMethod
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-proxy\modules\createPrototypeProxy.js:44:35
+finishClassComponent
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:8811:23
+updateClassComponent
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:8762:6
+beginWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:9581:10
+performUnitOfWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:12924:25
+workLoop
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:12953:43
+renderRoot
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:12996:17
+performWorkOnRoot
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13632:34
+performWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13545:26
+performSyncWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13506:16
+requestWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13392:6
+scheduleWorkImpl
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13259:24
+scheduleWork
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:13207:28
+enqueueSetState
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\Renderer\ReactNativeRenderer-dev.js:6224:19
+setState
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react\cjs\react.development.js:242:31
+<unknown>
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\ReactNative\AppContainer.js:78:26
+emit
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\vendor\emitter\EventEmitter.js:180:12
+__callFunction
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\BatchedBridge\MessageQueue.js:351:47
+<unknown>
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\BatchedBridge\MessageQueue.js:116:26
+__guardSafe
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\BatchedBridge\MessageQueue.js:314:6
+callFunctionReturnFlushedQueue
+    E:\Code\Practice\React-Native\RNDemo\node_modules\react-native\Libraries\BatchedBridge\MessageQueue.js:115:17
