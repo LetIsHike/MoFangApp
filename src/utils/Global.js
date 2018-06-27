@@ -2,13 +2,16 @@
  * 全局变量方法，一般我会用来设置全局的方法，比如说：系统判断，屏幕宽高，主题设置，图片初始化。 具体的详情可以查看global.js内部注释。
  */
 
-import { Dimensions, AsyncStorage, PixelRatio, Platform, Alert } from 'react-native';
+import {
+  Dimensions, AsyncStorage, PixelRatio, Platform, Alert,
+} from 'react-native';
 
 // 项目中的图片可以通过Images.xxx 获取
-import { Images } from '../Resources/index';
+import { Actions } from 'react-native-router-flux';
+// import { Theme, Toast } from 'teaset';
+// import { Images } from '../Resources/index';
 
 // 统一管理项目中的路由
-import { Actions } from "react-native-router-flux";
 
 // 处理安卓，iOS字体不同的类，使用方法 fontSize:FONT_SIZE(20)
 import FontSize from './FontSize';
@@ -16,7 +19,6 @@ import FontSize from './FontSize';
 import { px2dp } from './Tool';
 
 // teaset中提供的一些常用方法
-import { Theme, Toast } from 'teaset';
 
 // 基于react-native-fetch-blob封装的网络请求
 import RTRequest from './Request';
@@ -24,7 +26,7 @@ import RTRequest from './Request';
 import Config from './Config';
 
 // 通过系统API获得屏幕宽高
-let { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 // 系统是iOS
 global.iOS = (Platform.OS === 'ios');
@@ -43,7 +45,7 @@ global.FONT_SIZE = FontSize;
 // 屏幕适配
 global.px2dp = px2dp;
 // 主题
-global.Theme = Theme;
+// global.Theme = Theme;
 // 网络请求
 global.RTRequest = RTRequest;
 // 配置
@@ -51,12 +53,10 @@ global.Config = Config;
 // router跳转的方法
 global.Actions = Actions;
 // 图片加载
-global.Images = Images;
+// global.Images = Images;
 // 弹出框
 global.Alert = Alert;
 // 存储
 global.AsyncStorage = AsyncStorage;
 // 弹框Toast
-global.Toast = Toast;
-
-
+// global.Toast = Toast;
