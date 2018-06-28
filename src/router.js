@@ -1,18 +1,16 @@
-import React, {
-  Component,
-} from 'react';
+import React from 'react';
 import {
   Scene,
   Router,
-  Actions,
-  Reducer,
-  ActionConst,
-  Overlay,
+  // Actions,
+  // Reducer,
+  // ActionConst,
+  // Overlay,
   Tabs,
   Modal,
-  Drawer,
+  // Drawer,
   Stack,
-  Lightbox,
+  // Lightbox,
 } from 'react-native-router-flux';
 import MyHomework from './views/Student/MyHomework';
 import ExamRecords from './views/Student/ExamRecords';

@@ -6,6 +6,16 @@ import {
   Button,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import {
+  connect,
+} from 'react-redux';
+import {
+  bindActionCreators,
+} from 'redux';
+import PropTypes from 'prop-types';
+import {
+  test,
+} from '../../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,13 +23,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Test3 extends Component {
+@connect(
+  state => state,
+  dispatch => ({
+    doTest: bindActionCreators(test, dispatch),
+  }),
+)
+class Logo extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const {
+      doTest,
+    } = this.props;
+    console.log(42, doTest);
+    doTest();
     return (
       <View style={styles.container}>
         <Text>
@@ -31,3 +52,12 @@ export default class Test3 extends Component {
     );
   }
 }
+
+Logo.propTypes = {
+  doTest: PropTypes.func,
+};
+
+Logo.defaultProps = {
+  doTest: () => {},
+};
+export default Logo;

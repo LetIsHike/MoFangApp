@@ -14,6 +14,8 @@ module.exports = {
       "no-console": 0,
       "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-      "import/prefer-default-export": 0
+      "import/prefer-default-export": 0,
+      "linebreak-style": 2,
+      "no-restricted-syntax": 0,
     }
   }
