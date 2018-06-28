@@ -38,14 +38,19 @@ class Logo extends Component {
   render() {
     const {
       doTest,
+      test: a,
     } = this.props;
-    console.log(42, doTest);
     doTest();
+    console.log(44, a);
     return (
       <View style={styles.container}>
         <Text>
           采集科技
         </Text>
+        <Button
+          title="获取this.props"
+          onPress={() => console.log(45, this)}
+        />
         <Button title="go to Login" onPress={() => Actions.account()} />
         <Button title="go to wrongNotes" onPress={() => Actions.wrongNotes()} />
       </View>
@@ -55,9 +60,12 @@ class Logo extends Component {
 
 Logo.propTypes = {
   doTest: PropTypes.func,
+  test: PropTypes.any,
 };
 
 Logo.defaultProps = {
   doTest: () => {},
+  test: '',
 };
+
 export default Logo;
