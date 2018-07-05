@@ -1,6 +1,7 @@
 package com.rndemo;
 
 import android.app.Application;
+import android.webkit.WebView; 
 
 import com.facebook.react.ReactApplication;
 import org.devio.rn.splashscreen.SplashScreenReactPackage; // 1.导入启动屏包
@@ -43,5 +44,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    WebView.setWebContentsDebuggingEnabled(true);
   }
 }
