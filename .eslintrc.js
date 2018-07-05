@@ -6,7 +6,12 @@ module.exports = {
     ],
     "globals": {
       "__DEV__": true,
-      "fetch": true
+      "fetch": true,
+      "PixelRatio": true,
+      "SCREEN_WIDTH": true,
+      "SCREEN_HEIGHT": true,
+      "storage": true,
+      "Storages": true,
     },
     "parser": "babel-eslint",
     "rules": {
