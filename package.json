@@ -12,7 +12,8 @@
     "dev-ios": "react-native run-ios",
     "build": "cd android && gradlew assembleRelease",
     "test-build": "cd android && gradlew installRelease",
-    "clear-build-cache": "gradlew clean"
+    "clear-build-cache": "cd android && gradlew clean",
+    "clear": "rimraf android/app/build && npm run clear-build-cache"
   },
   "dependencies": {
     "antd-mobile-rn": "^2.2.0",
@@ -22,6 +23,7 @@
     "react-native": "0.55.4",
     "react-native-router-flux": "^4.0.0-beta.31",
     "react-native-splash-screen": "^3.0.9",
+    "react-native-storage": "^0.2.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
@@ -41,7 +43,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.10.0",
     "jest": "22.4.4",
-    "react-test-renderer": "16.3.1"
+    "react-test-renderer": "16.3.1",
+    "rimraf": "^2.6.2"
   },
   "jest": {
     "preset": "react-native"

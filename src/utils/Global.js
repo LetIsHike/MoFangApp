@@ -3,15 +3,17 @@
  */
 
 import {
-  Dimensions, AsyncStorage, PixelRatio, Platform, Alert,
+  Dimensions,
+  PixelRatio,
+  Platform,
+  Alert,
 } from 'react-native';
 
-// 项目中的图片可以通过Images.xxx 获取
 import { Actions } from 'react-native-router-flux';
-// import { Theme, Toast } from 'teaset';
+// 项目中的图片可以通过Images.xxx 获取
 // import { Images } from '../Resources/index';
 
-// 统一管理项目中的路由
+import Storage from './Storage';
 
 // 处理安卓，iOS字体不同的类，使用方法 fontSize:FONT_SIZE(20)
 import FontSize from './FontSize';
@@ -21,7 +23,7 @@ import { px2dp } from './Tool';
 // teaset中提供的一些常用方法
 
 // 基于react-native-fetch-blob封装的网络请求
-import RTRequest from './Request';
+// import RTRequest from './Request';
 // 配置文件，可以放网络请求等
 import Config from './Config';
 
@@ -47,7 +49,7 @@ global.px2dp = px2dp;
 // 主题
 // global.Theme = Theme;
 // 网络请求
-global.RTRequest = RTRequest;
+// global.RTRequest = RTRequest;
 // 配置
 global.Config = Config;
 // router跳转的方法
@@ -57,6 +59,6 @@ global.Actions = Actions;
 // 弹出框
 global.Alert = Alert;
 // 存储
-global.AsyncStorage = AsyncStorage;
+global.storage = Storage;
 // 弹框Toast
 // global.Toast = Toast;
