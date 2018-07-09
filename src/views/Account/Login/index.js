@@ -1,35 +1,137 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  Dimensions,
+} from 'react-native';
+// import {
+//   Actions,
+// } from 'react-native-router-flux';
+import {
+  Button,
   Text,
   View,
-  Button,
-} from 'react-native';
-import {
-  Actions,
-} from 'react-native-router-flux';
+} from 'antd-mobile-rn';
+import Icon from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import CIcon from '../../../components/Icon';
+import Resolution from '../../../components/FontSize';
 
+console.log(18, CIcon);
+const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height,
+    width,
+    fontSize: 16,
+  },
+  fontSize16: {
+    fontSize: 16,
+  },
+  // icon: {
+  //   height: 40,
+  // },
+  vertical: {},
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 40,
+    backgroundColor: '#30bf6c',
+  },
+
+  icon: {
+    fontFamily: 'iconfont',
+    fontSize: 24,
+    margin: 10,
   },
 });
 
-export default class Test3 extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: '',
+    };
   }
 
+  componentDidMount() {
+    storage.save({
+      key: 'loginState',
+      data: {
+        from: 'some other site',
+        userid: 'some userid',
+        token: 'some token',
+      },
+      expires: 1000 * 3600,
+    });
+
+    // 读取
+    storage.load({
+      key: 'loginState',
+      autoSync: true,
+      syncInBackground: true,
+      syncParams: {
+        extraFetchOptions: {
+          // 各种参数
+        },
+        someFlag: true,
+      },
+    }).then((ret) => {
+      console.log(ret.userid);
+      this.setState({ user: ret });
+      const {
+        user,
+      } = this.state;
+      console.log(user);
+    }).catch((err) => {
+      console.warn(err.message);
+    });
+  }
+
+  // https://blog.csdn.net/jiecsdn/article/details/60867232
   render() {
     return (
-      <View style={styles.container}>
-        <Text>
-          登陆
-        </Text>
-        <Button title="go to student" onPress={() => Actions.student()} />
-        <Button title="go to teacher" onPress={() => Actions.teacher()} />
-      </View>
+      <Resolution.FixWidthView>
+        <View style={styles.navbar}>
+          <Button>
+            <CIcon name="bofang" size={25} />
+          </Button>
+          <Text>
+            <Icon name="ios-settings" size={45} color="red" />
+          </Text>
+          {/* <Text>
+            <FontAwesome name="search" size={30} />
+          </Text> */}
+        </View>
+        {/* <View>
+          {
+            iconItems.map(item => (
+              <Text key={item} style={[styles.icon, { backgroundColor: '#000' }]}>
+                {item.formatCode}
+              </Text>
+            ))
+          }
+        </View> */}
+
+        {/* <View style={styles.container}>
+          <Text>
+            登陆
+          </Text>
+          <Button onClick={() => Actions.student()}>
+            go to student
+          </Button>
+          <Button onClick={() => Actions.teacher()}>
+            go to teacher
+          </Button>
+          <Button>
+            设置storage
+          </Button>
+          <Button>
+            获取storage
+          </Button>
+        </View> */}
+      </Resolution.FixWidthView>
     );
   }
 }

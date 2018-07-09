@@ -5,9 +5,9 @@
 
 import RNFetchBlob from 'react-native-fetch-blob';
 
-import {
-  AsyncStorage,
-} from 'react-native';
+// import {
+//   AsyncStorage,
+// } from 'react-native';
 
 // 处理url
 const encodeQuery = (url, params = {}) => {

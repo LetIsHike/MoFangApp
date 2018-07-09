@@ -1,6 +1,7 @@
 /**
  * FontSize.js：基于屏幕分辨率封装的字体适配方法，使用方法：fontSize:FONT_SIZE(14)
  */
+
 const FontSize = (size) => {
   if (PixelRatio === 2) {
     // iphone 5s and older Androids
@@ -58,4 +59,4 @@ const FontSize = (size) => {
   return size;
 };
 
-module.exports = FontSize; // eslint-disable-line no-undef
+export default FontSize; // eslint-disable-line no-undef
