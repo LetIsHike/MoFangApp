@@ -11,11 +11,12 @@ import {
   Text,
   View,
 } from 'antd-mobile-rn';
-import {
-  Icon,
-} from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import CIcon from '../../../components/Icon';
 import Resolution from '../../../components/FontSize';
 
+console.log(18, CIcon);
 const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
@@ -27,11 +28,22 @@ const styles = StyleSheet.create({
   fontSize16: {
     fontSize: 16,
   },
+  // icon: {
+  //   height: 40,
+  // },
+  vertical: {},
   navbar: {
-    height: 40,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 40,
     backgroundColor: '#30bf6c',
+  },
+
+  icon: {
+    fontFamily: 'iconfont',
+    fontSize: 24,
+    margin: 10,
   },
 });
 
@@ -83,15 +95,25 @@ export default class Login extends Component {
       <Resolution.FixWidthView>
         <View style={styles.navbar}>
           <Button>
-            <Icon name="rocket" size={16} color="red" />
+            <CIcon name="bofang" size={25} />
           </Button>
           <Text>
-            12-23数学作业
+            <Icon name="ios-settings" size={45} color="red" />
           </Text>
-          <Text>
-            计时00:00 /预估30分钟
-          </Text>
+          {/* <Text>
+            <FontAwesome name="search" size={30} />
+          </Text> */}
         </View>
+        {/* <View>
+          {
+            iconItems.map(item => (
+              <Text key={item} style={[styles.icon, { backgroundColor: '#000' }]}>
+                {item.formatCode}
+              </Text>
+            ))
+          }
+        </View> */}
+
         {/* <View style={styles.container}>
           <Text>
             登陆
