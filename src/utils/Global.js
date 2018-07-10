@@ -12,15 +12,8 @@ import {
 import { Actions } from 'react-native-router-flux';
 // 项目中的图片可以通过Images.xxx 获取
 // import { Images } from '../Resources/index';
-
+// 本地存储
 import Storage from './Storage';
-
-// 处理安卓，iOS字体不同的类，使用方法 fontSize:FONT_SIZE(20)
-import FontSize from './FontSize';
-// 处理安卓，iOS宽高的区别，使用方法 width:px2dp(20)
-import { px2dp } from './Tool';
-
-// teaset中提供的一些常用方法
 
 // 基于react-native-fetch-blob封装的网络请求
 // import RTRequest from './Request';
@@ -29,7 +22,6 @@ import Config from './Config';
 
 // 通过系统API获得屏幕宽高
 const { height, width } = Dimensions.get('window');
-
 // 系统是iOS
 global.iOS = (Platform.OS === 'ios');
 // 系统是安卓
@@ -42,12 +34,6 @@ global.SCREEN_HEIGHT = height;
 global.PixelRatio = PixelRatio.get();
 // 最小线宽
 global.pixel = 1 / PixelRatio;
-// 适配字体
-global.FONT_SIZE = FontSize;
-// 屏幕适配
-global.px2dp = px2dp;
-// 主题
-// global.Theme = Theme;
 // 网络请求
 // global.RTRequest = RTRequest;
 // 配置
@@ -60,5 +46,3 @@ global.Actions = Actions;
 global.Alert = Alert;
 // 存储
 global.storage = Storage;
-// 弹框Toast
-// global.Toast = Toast;
