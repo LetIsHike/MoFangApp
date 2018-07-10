@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
 // import {
 //   Actions,
 // } from 'react-native-router-flux';
@@ -15,37 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CIcon from '../../../components/Icon';
 import Resolution from '../../../components/FontSize';
-
-console.log(18, CIcon);
-const { height, width } = Dimensions.get('window');
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height,
-    width,
-    fontSize: 16,
-  },
-  fontSize16: {
-    fontSize: 16,
-  },
-  // icon: {
-  //   height: 40,
-  // },
-  vertical: {},
-  navbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 40,
-    backgroundColor: '#30bf6c',
-  },
-
-  icon: {
-    fontFamily: 'iconfont',
-    fontSize: 24,
-    margin: 10,
-  },
-});
+import styles from './styles.scss';
 
 export default class Login extends Component {
   constructor(props) {
