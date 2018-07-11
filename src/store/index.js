@@ -1,6 +1,7 @@
 import {
   createStore,
   applyMiddleware,
+  compose,
 } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
@@ -17,12 +18,22 @@ if (process.env.NODE_ENV === 'development') {
   middleware.push(logger);
 }
 
+
 const configureStore = (preloadedState = {}) => {
-  const store = createStore(
-    rootReducer,
-    preloadedState,
-    applyMiddleware(...middleware),
-  );
+  const store = process.env.NODE_ENV === 'development'
+    ? createStore(
+      rootReducer,
+      preloadedState,
+      compose(
+        applyMiddleware(...middleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
+      ),
+    )
+    : createStore(
+      rootReducer,
+      preloadedState,
+      applyMiddleware(...middleware),
+    );
 
   sagaMiddleware.run(saga);
 
