@@ -7,44 +7,62 @@ import {
   View,
 } from 'react-native';
 
-const props = {};
+const options = {};
 export default class Resolution {
   static get(useFixWidth = true) {
-    return useFixWidth ? { ...props.fw } : { ...props.fh };
+    const {
+      fixedWidth,
+      fixedHeight,
+    } = options;
+    return useFixWidth ? { ...fixedWidth } : { ...fixedHeight };
   }
 
   static setDesignSize(dwidth = 800, dheight = 1280, dim = 'window') {
     const designSize = { width: dwidth, height: dheight };
-
     const navHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 64;
     const pxRatio = PixelRatio.get(dim);
-    let { width, height } = Dimensions.get(dim);
-    if (dim != 'screen')height -= navHeight;
+    console.log(24, pxRatio);
+    let { height } = Dimensions.get(dim);
+    const { width } = Dimensions.get(dim);
+    if (dim !== 'screen') height -= navHeight;
     const w = PixelRatio.getPixelSizeForLayoutSize(width);
     const h = PixelRatio.getPixelSizeForLayoutSize(height);
 
-    const fw_design_scale = designSize.width / w;
-    fw_width = designSize.width;
-    fw_height = h * fw_design_scale;
-    fw_scale = 1 / pxRatio / fw_design_scale;
+    /**
+     * fixedWidth 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，
+     * 但只保持应用程序内容的原始宽度不变，高度可能会改变,简言之宽度固定，高度自适应。
+     */
+    const fixedWidthDesignScale = designSize.width / w;
+    const fixedWidthWidth = designSize.width;
+    const fixedWidthHeight = h * fixedWidthDesignScale;
+    const fixedWidthScale = 1 / pxRatio / fixedWidthDesignScale;
 
-    const fh_design_scale = designSize.height / h;
-    fh_width = w * fh_design_scale;
-    fh_height = designSize.height;
-    fh_scale = 1 / pxRatio / fh_design_scale;
+    /**
+     * fixedHeight 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，
+     * 但只保持应用程序内容的原始高度不变，宽度可能会改变,简言之高度固定，宽度自适应。
+     */
+    const fixedHeightDesignScale = designSize.height / h;
+    const fixedHeightWidth = w * fixedHeightDesignScale;
+    const fixedHeightHeight = designSize.height;
+    const fixedHeightScale = 1 / pxRatio / fixedHeightDesignScale;
 
-    props.fw = {
-      width: fw_width, height: fw_height, scale: fw_scale, navHeight,
+    options.fixedWidth = {
+      width: fixedWidthWidth, height: fixedWidthHeight, scale: fixedWidthScale, navHeight,
     };
-    props.fh = {
-      width: fh_width, height: fh_height, scale: fh_scale, navHeight,
+    options.fixedHeight = {
+      width: fixedHeightWidth, height: fixedHeightHeight, scale: fixedHeightScale, navHeight,
     };
   }
 
     static FixWidthView = (p) => {
       const {
-        width, height, scale, navHeight,
-      } = props.fw;
+        fixedWidth: {
+          width,
+          height,
+          scale,
+          navHeight,
+        },
+      } = options;
       return (
         <View
           {...p}
@@ -65,8 +83,13 @@ export default class Resolution {
 
     static FixHeightView = (p) => {
       const {
-        width, height, scale, navHeight,
-      } = props.fh;
+        fixedWidth: {
+          width,
+          height,
+          scale,
+          navHeight,
+        },
+      } = options;
       return (
         <View
           {...p}

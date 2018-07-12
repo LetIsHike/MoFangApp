@@ -12,6 +12,7 @@ module.exports = {
       "SCREEN_HEIGHT": true,
       "storage": true,
       "Storages": true,
+      "Fetch": true,
     },
     "parser": "babel-eslint",
     "rules": {
@@ -22,5 +23,7 @@ module.exports = {
       "import/prefer-default-export": 0,
       "linebreak-style": 2,
       "no-restricted-syntax": 0,
+      "no-underscore-dangle": 0,
+      "guard-for-in": 0,
     }
   }

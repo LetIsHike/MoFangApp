@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import {
 //   Actions,
 // } from 'react-native-router-flux';
@@ -9,6 +9,7 @@ import {
 } from 'antd-mobile-rn';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import md5 from 'md5';
 import CIcon from '../../../components/Icon';
 import Resolution from '../../../components/FontSize';
 import styles from './styles.scss';
@@ -18,6 +19,7 @@ export default class Login extends Component {
     super(props);
     this.state = {
       user: '',
+      fetchData: {},
     };
   }
 
@@ -55,49 +57,96 @@ export default class Login extends Component {
     });
   }
 
-  // https://blog.csdn.net/jiecsdn/article/details/60867232
+
+  getUserInfo = () => {
+    Fetch.get('https://test-cjyun-api.ecaicn.com/user/personalInfo', { credentials: 'omit' })
+      .then((responseJson) => {
+        console.log('getUserInfo', responseJson);
+        this.setState({
+          fetchData: responseJson,
+        });
+
+        console.log('global', global);
+        console.log('cookie', global.Cookies);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  login = () => {
+    // fetch('https://test-cjyun-api.ecaicn.com/unlogin/login', {
+    //   method: 'POST',
+    //   credentials: 'omit',
+    //   mode: 'no-cors',
+    //   cache: 'no-cache',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    // body: JSON.stringify({
+    //   userName: 'sys_admin',
+    //   password: md5('123456'),
+    // }),
+    // })
+    Fetch.post('https://test-cjyun-api.ecaicn.com/unlogin/login', {
+      userName: 'sys_admin',
+      password: md5('123456'),
+    })
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          fetchData: res,
+        });
+      });
+  }
+
+  logout = () => {
+    fetch('https://test-cjyun-api.ecaicn.com/unlogin/logout.cbp', {
+      method: 'POST',
+      credentials: 'omit',
+      mode: 'no-cors',
+      cache: 'no-cache',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((res) => {
+        console.log(res); this.setState({
+          fetchData: res,
+        });
+      });
+  }
+
+
   render() {
+    const {
+      fetchData,
+    } = this.state;
     return (
-      <Resolution.FixWidthView>
+      <Fragment>
         <View style={styles.navbar}>
-          <Button>
+          <Button onClick={this.login}>
+            登陆
             <CIcon name="bofang" size={25} />
           </Button>
-          <Text>
+          <Button onClick={this.getUserInfo}>
+            获取个人信息
             <Icon name="ios-settings" size={45} color="red" />
-          </Text>
-          {/* <Text>
+          </Button>
+          <Button onClick={this.logout}>
+            退出
             <FontAwesome name="search" size={30} />
-          </Text> */}
+          </Button>
         </View>
-        {/* <View>
+        <Text>
           {
-            iconItems.map(item => (
-              <Text key={item} style={[styles.icon, { backgroundColor: '#000' }]}>
-                {item.formatCode}
-              </Text>
-            ))
+            JSON.stringify(fetchData)
           }
-        </View> */}
-
-        {/* <View style={styles.container}>
-          <Text>
-            登陆
-          </Text>
-          <Button onClick={() => Actions.student()}>
-            go to student
-          </Button>
-          <Button onClick={() => Actions.teacher()}>
-            go to teacher
-          </Button>
-          <Button>
-            设置storage
-          </Button>
-          <Button>
-            获取storage
-          </Button>
-        </View> */}
-      </Resolution.FixWidthView>
+        </Text>
+      </Fragment>
     );
   }
 }

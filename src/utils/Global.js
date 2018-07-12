@@ -15,8 +15,8 @@ import { Actions } from 'react-native-router-flux';
 // 本地存储
 import Storage from './Storage';
 
-// 基于react-native-fetch-blob封装的网络请求
-// import RTRequest from './Request';
+// 封装的网络请求
+import Fetch from './Fetch';
 // 配置文件，可以放网络请求等
 import Config from './Config';
 
@@ -35,7 +35,7 @@ global.PixelRatio = PixelRatio.get();
 // 最小线宽
 global.pixel = 1 / PixelRatio;
 // 网络请求
-// global.RTRequest = RTRequest;
+global.Fetch = Fetch;
 // 配置
 global.Config = Config;
 // router跳转的方法

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
-
 import Router from './router';
+import Resolution from './components/FontSize';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,7 +10,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <Router />
+      <Resolution.FixWidthView>
+        <Router />
+      </Resolution.FixWidthView>
     );
   }
 }
