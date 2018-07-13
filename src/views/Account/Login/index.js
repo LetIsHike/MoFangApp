@@ -23,6 +23,7 @@ export default class Login extends Component {
     };
   }
 
+
   componentDidMount() {
     storage.save({
       key: 'loginState',
@@ -46,7 +47,7 @@ export default class Login extends Component {
         someFlag: true,
       },
     }).then((ret) => {
-      console.log(ret.userid);
+
       this.setState({ user: ret });
       const {
         user,

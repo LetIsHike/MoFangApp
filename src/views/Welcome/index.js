@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Button,
-} from 'antd-mobile-rn';
 
 class Welcome extends React.Component {
   componentWillMount() {
@@ -35,11 +32,7 @@ class Welcome extends React.Component {
 
 
   render() {
-    return (
-      <Button onClick={() => { console.log('onclick'); Actions.login(); }}>
-        text
-      </Button>
-    );
+    return null
   }
 }
 
