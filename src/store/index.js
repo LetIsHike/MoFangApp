@@ -20,13 +20,13 @@ if (process.env.NODE_ENV === 'development') {
 
 
 const configureStore = (preloadedState = {}) => {
-  const store = process.env.NODE_ENV === 'development'
+  const store = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__
     ? createStore(
       rootReducer,
       preloadedState,
       compose(
         applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
+        window.__REDUX_DEVTOOLS_EXTENSION__(),
       ),
     )
     : createStore(

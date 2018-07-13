@@ -27,11 +27,11 @@ const RouteMap = () => (
       hideNavBar
       key="modal"
     >
-      <Stack key="welcome" initial>
+      <Stack key="welcome">
         <Scene title="欢迎页面" hideNavBar key="welcome" component={Welcome} />
       </Stack>
       <Stack title="登陆" key="account">
-        <Scene key="login" hideNavBar component={Login} />
+        <Scene key="login" hideNavBar initial={true} component={Login} />
       </Stack>
       <Stack key="student">
         <Tabs>

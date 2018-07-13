@@ -1,7 +1,14 @@
 import React from 'react';
+import {
+  Button,
+} from 'antd-mobile-rn';
 
-export default class Welcome extends React.Component {
+class Welcome extends React.Component {
   componentWillMount() {
+    this.getToken();
+  }
+
+  getToken = () => {
     storage.load({
       key: 'token',
       autoSync: true,
@@ -15,19 +22,25 @@ export default class Welcome extends React.Component {
     }).then((ret) => {
       if (ret) {
         console.log('获取到了');
-        Actions.push('myHomework');
+        Actions.myHomework();
       } else {
-        Actions.push('login');
+        Actions.login();
         console.log('没获取到');
       }
     }).catch((err) => {
-      console.warn(err.message);
+      console.warn('err:', err.message);
+      Actions.login();
     });
   }
 
+
   render() {
     return (
-      null
+      <Button onClick={() => { console.log('onclick'); Actions.login(); }}>
+        text
+      </Button>
     );
   }
 }
+
+export default Welcome;

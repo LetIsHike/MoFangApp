@@ -21,7 +21,7 @@ export default class Resolution {
     const designSize = { width: dwidth, height: dheight };
     const navHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 64;
     const pxRatio = PixelRatio.get(dim);
-    console.log(24, pxRatio);
+
     let { height } = Dimensions.get(dim);
     const { width } = Dimensions.get(dim);
     if (dim !== 'screen') height -= navHeight;
