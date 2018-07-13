@@ -13,6 +13,7 @@ module.exports = {
       "storage": true,
       "Storages": true,
       "Fetch": true,
+      "Actions": true,
     },
     "parser": "babel-eslint",
     "rules": {
