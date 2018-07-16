@@ -1,5 +1,17 @@
 import { isEmpty } from 'ramda';
+import { Toast } from 'antd-mobile-rn';
 import qs from 'qs';
+
+const errCode = (json) => {
+  switch (json.code) {
+    case 703:
+      return check703(json);
+    case -1:
+      Toast.fail(`${json.code} ${json.message || json.data}`);
+      return Promise.reject(new Error(`${json.code} ${json.message || json.data}`));
+    }
+    return json;
+}
 
 const Fetch = {
   /**
@@ -18,7 +30,7 @@ const Fetch = {
     }
     if (!isEmpty(headerParams)) {
       for (const key in headerParams) {
-        headers[key] = headerParams[key];
+       headers[key] = headerParams[key];
       }
     }
     const options = {
@@ -32,10 +44,11 @@ const Fetch = {
     } else if (type === 'file') {
       options.body = params;
     }
-    console.log(options, 35);
+
     return fetch(url, options)
       .then(res => res.text())
-      .catch(err => new Error(err));
+      .then(errCode)
+      .catch(err => new Error(err))
   },
   get(url, params = {}, mock = false, headerParams = {}) {
     let _url = url;

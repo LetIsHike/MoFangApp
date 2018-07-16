@@ -66,30 +66,10 @@ export default class Login extends Component {
         this.setState({
           fetchData: responseJson,
         });
-
-        console.log('global', global);
-        console.log('cookie', global.Cookies);
       })
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
   login = () => {
-    // fetch('https://test-cjyun-api.ecaicn.com/unlogin/login', {
-    //   method: 'POST',
-    //   credentials: 'omit',
-    //   mode: 'no-cors',
-    //   cache: 'no-cache',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    // body: JSON.stringify({
-    //   userName: 'sys_admin',
-    //   password: md5('123456'),
-    // }),
-    // })
     Fetch.post('https://test-cjyun-api.ecaicn.com/unlogin/login', {
       userName: 'sys_admin',
       password: md5('123456'),
