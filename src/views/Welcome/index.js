@@ -32,7 +32,7 @@ class Welcome extends React.Component {
 
 
   render() {
-    return null
+    return null;
   }
 }
 
