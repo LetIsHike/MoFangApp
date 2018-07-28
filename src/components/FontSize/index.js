@@ -60,14 +60,14 @@ export default class Resolution {
           width,
           height,
           scale,
-          navHeight,
+          // navHeight,
         },
       } = options;
       return (
         <View
           {...p}
           style={{
-            marginTop: navHeight,
+            // marginTop: navHeight,
             width,
             height,
             backgroundColor: 'transparent',
@@ -87,14 +87,14 @@ export default class Resolution {
           width,
           height,
           scale,
-          navHeight,
+          // navHeight,
         },
       } = options;
       return (
         <View
           {...p}
           style={{
-            marginTop: navHeight,
+            // marginTop: navHeight,
             width,
             height,
             backgroundColor: 'transparent',
