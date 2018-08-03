@@ -16,7 +16,7 @@ import Login from './views/Account/Login';
 import Homework from './views/Teacher/Homework';
 import Logo from './components/Logo';
 import Welcome from './views/Welcome';
-
+import Example from '../Example';
 
 const RouteMap = props => (
   <Router
@@ -30,6 +30,9 @@ const RouteMap = props => (
       hideNavBar
       key="modal"
     >
+      <Stack key="example">
+        <Scene title="例子" hideNavBar key="example" component={Example} initial />
+      </Stack>
       <Stack key="welcome">
         <Scene title="欢迎页面" hideNavBar key="welcome" component={Welcome} />
       </Stack>
