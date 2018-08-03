@@ -65,7 +65,8 @@ class Welcome extends React.Component {
         }
       }
     }).catch(() => {
-      Actions.login();
+      Actions.student();
+      // Actions.login();
     });
   }
 

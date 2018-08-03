@@ -1,6 +1,6 @@
 ### 说明
 ##### 项目中常用的封装都放在app目录下Common文件夹
-1、`FontSize.js`：基于屏幕分辨率封装的字体适配方法，使用方法：`fontSize:FONT_SIZE(14)`
+1、`Resolution.js`：基于屏幕分辨率封装的字体适配方法，使用方法：`fontSize:FONT_SIZE(14)`
 
 2、`Tool.js`：封装常用的属性方法，比如说判断是否登录，或者其他的方法，在这个方法中，提供了用来做安卓，iOS换算px的方法，使用方法：`width:px2dp(100)`
 
