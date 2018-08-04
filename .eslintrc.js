@@ -14,6 +14,8 @@ module.exports = {
       "Storages": true,
       "Fetch": true,
       "Actions": true,
+      "PX_HEIGHT": true,
+      "PX_WIDTH": true,
     },
     "parser": "babel-eslint",
     "rules": {
@@ -26,5 +28,6 @@ module.exports = {
       "no-restricted-syntax": 0,
       "no-underscore-dangle": 0,
       "guard-for-in": 0,
+      "react/jsx-one-expression-per-line": 0,
     }
   }
