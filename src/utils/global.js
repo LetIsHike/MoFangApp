@@ -6,7 +6,6 @@ import {
   Dimensions,
   PixelRatio,
   Platform,
-  // Alert,
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -14,7 +13,6 @@ import { Actions } from 'react-native-router-flux';
 // import { Images } from '../Resources/index';
 // 本地存储
 import Storage from './storage';
-
 // 封装的网络请求
 import Fetch from './fetch';
 // 配置文件，可以放网络请求等
@@ -30,6 +28,10 @@ global.Android = (Platform.OS === 'android');
 global.SCREEN_WIDTH = width;
 // 获取屏幕高度
 global.SCREEN_HEIGHT = height;
+// 获取屏幕像素宽度
+global.PX_WIDTH = PixelRatio.getPixelSizeForLayoutSize(width);
+// 获取屏幕像素高度
+global.PX_HEIGHT = PixelRatio.getPixelSizeForLayoutSize(height);
 // 获取屏幕分辨率
 global.PixelRatio = PixelRatio.get();
 // 最小线宽

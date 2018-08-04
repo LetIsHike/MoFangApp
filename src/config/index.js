@@ -2,8 +2,10 @@
  * 配置文件，可以用来配置请求网址，配置表等等。
  */
 
-const Config = {
-  baseApi: __DEV__ ? 'http://shitu.leanapp.cn/api' : 'http://shitu.leanapp.cn/api',
-};
+import Api from './api';
+import Theme from './theme';
 
-export default Config;
+export default {
+  Api,
+  Theme,
+};
