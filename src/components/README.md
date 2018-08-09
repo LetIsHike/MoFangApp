@@ -13,7 +13,7 @@
  - ``` <Icon name="rocket" size={30} color="#900" /> ```
  - ```<CIcon name="wendang1" size={25} color="#900" /> ```
 
-##### 注意：若新添icon需要执行 ```npm run XXX```（暂时没制作成工具）
+###### 注意：若需新添icon，需要将iconfont.ttf文件放置在src/public/icon/下并执行 win： ```npm run iconfontMap-win```、 linux：```iconfontMap-linux```
 ---
 
 ### Resolution
@@ -27,10 +27,8 @@
 * 为了减少svg图片请求次数将svg转为xml
  - 使用方法： 
  ```<SvgUri height="40" width="40" source="examBook" fill="#fff" style={xxx} />```
- - 注意：
 
-> * 若新添svg图片需要执行 npm run svg-to-js
-> * 如果 react-native-svg-uri 库有兼容问题，请使用自己封装的svg组件 [参考文档](https://www.jianshu.com/p/7db2bc62c5ed)
+###### 注意：1、若需新添svg图片，需要将svg图片放置在src/public/svg下并执行 npm run svg-to-js  2、如果 react-native-svg-uri 库有兼容问题，请使用自己封装的svg组件 [参考文档](https://www.jianshu.com/p/7db2bc62c5ed)
 
 ---
 
@@ -39,8 +37,8 @@
  - 若给tabs设icon={TabBarIcon}则Stack可传image与selectedImage
  - 若给Stack设icon={TabBarIcon}则Scene可传image与selectedImage
 
-> * image icon默认样式
-> * selectedImage icon选中样式
+    > * image icon默认样式
+    > * selectedImage icon选中样式
 
 ---
 
