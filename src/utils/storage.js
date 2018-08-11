@@ -46,16 +46,15 @@ const storage = new Storage({
 const fail = (err) => {
   // 如果没有找到数据且没有sync方法，
   // 或者有其他异常，则在catch中返回
-  console.warn('storage 操作有误:', err);
   switch (err.name) {
     case 'NotFoundError':
-      // TODO;
+      console.log(err.name);
       break;
     case 'ExpiredError':
-      // TODO
+      console.log(err.name);
       break;
     default:
-        // TODO
+      console.log(err);
   }
 };
 

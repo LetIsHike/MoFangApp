@@ -19,14 +19,14 @@ const TabBarIcon = (props) => {
     const current = focused ? selectedImage : image;
     switch (typeof current) {
       case 'string':
-        return <CIcon name={current} size={32} color="#fff" />;
+        return <CIcon name={current} size={22} color="#fff" />;
       case 'number':
         return (
           <Image
             source={current}
             style={[{
-              height: 40,
-              width: 40,
+              height: 22,
+              width: 22,
             }]}
           />
         );
@@ -45,7 +45,7 @@ const TabBarIcon = (props) => {
       <Text
         style={{
           color: focused ? '#ffffff' : '#000000',
-          fontSize: 22,
+          fontSize: 12,
         }}
       >
         {title}
