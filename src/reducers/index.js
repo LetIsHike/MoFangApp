@@ -3,6 +3,7 @@ import {
   TEST,
 } from '../constants/action';
 import routes from './routes';
+import config from './config';
 
 export function test(state, action) {
   switch (action.type) {
@@ -16,4 +17,5 @@ export function test(state, action) {
 export default combineReducers({
   test,
   routes,
+  config,
 });

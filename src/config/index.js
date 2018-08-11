@@ -3,9 +3,10 @@
  */
 
 import Api from './api';
-import Theme from './theme';
+import Theme, { ThemeFlags } from './theme';
 
 export default {
   Api,
   Theme,
+  ThemeFlags,
 };

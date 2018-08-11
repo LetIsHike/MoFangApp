@@ -1,10 +1,6 @@
-// import {
-//   StyleSheet,
-// } from 'react-native';
+import { themeKey } from '../constants/stroage';
 
-// ThemeFlags
-
-export default {
+export const ThemeFlags = {
   Default: '#2196F3',
   Red: '#F44336',
   Pink: '#E91E63',
@@ -28,26 +24,28 @@ export default {
   Black: '#000000',
 };
 
-// export default class ThemeFactory {
-//   /**
-//      * 创建一个主题样式
-//      * @param themeFlag 主题标识
-//      * @returns {{themeColor: *, styles: *}}
-//      */
-//   static createTheme(themeFlag) {
-//     return {
-//       themeColor: themeFlag,
-//       styles: StyleSheet.create({
-//         selectedTitleStyle: {
-//           color: themeFlag,
-//         },
-//         tabBarSelectedIcon: {
-//           tintColor: themeFlag,
-//         },
-//         navBar: {
-//           backgroundColor: themeFlag,
-//         },
-//       }),
-//     };
-//   }
-// }
+export default class Theme {
+  // 获取缓存的主题配置
+  getTheme() {
+    return storage.Load({ key: themeKey })
+      .then((ret) => {
+        if (ret) {
+          return ret;
+        }
+        return this.saveTheme(ThemeFlags.Default);
+      })
+      .catch(() => this.saveTheme(ThemeFlags.Default));
+  }
+
+  /**
+   * 保存主题标识
+   */
+  saveTheme(themeFlag) {
+    return storage.Save({
+      key: themeKey,
+      data: themeFlag,
+    })
+      .then(() => themeFlag)
+      .catch(e => console.log('保存主题失败'));
+  }
+}
