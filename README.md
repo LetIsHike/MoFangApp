@@ -60,7 +60,7 @@
  - 执行 `npm run svg-to-xml` 命令即可
 
 ### iconfont映射
- - win 执行 `npm run iconfontMap-win`、 linux 执行 `npm run iconfontMap-linux` 命令即可
+ - win 执行 `npm run move-iconfontMap`、 linux 执行 `npm run mv-iconfontMap` 命令即可
 
 ---
 
