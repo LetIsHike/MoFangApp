@@ -5,14 +5,14 @@ import {
 } from '../actions/config';
 
 const initialState = {
-  color: '',
+  theme: {},
   language: '',
 };
 export default handleActions({
   [ChangeTheme](state, action) {
     return {
       ...state,
-      color: action.payload,
+      theme: action.payload,
     };
   },
   [ChangeLanguage](state, action) {

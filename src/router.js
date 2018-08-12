@@ -27,7 +27,12 @@ import homework from './public/img/homework.png';
 import styles from './router.scss';
 
 const RouteMap = (props) => {
-  console.log(30, props);
+  const {
+    theme: {
+      brand_primary,
+      brand_primary_similar,
+    },
+  } = props;
   return (
     <Router
       {...props}
@@ -46,11 +51,11 @@ const RouteMap = (props) => {
         <Stack title="登陆" key="account">
           <Scene key="login" hideNavBar component={Login} />
         </Stack>
-        <Stack key="student" hideNavBar>
+        <Stack key="student" hideNavBar initial>
           <Tabs
             key="student-tabs"
-            activeBackgroundColor="#2ea460" // 选中tabbar的背景色
-            inactiveBackgroundColor="#30bf6c" // 未选中tabbar的背景色
+            activeBackgroundColor={brand_primary_similar} // 选中tabbar的背景色
+            inactiveBackgroundColor={brand_primary} // 未选中tabbar的背景色
             // activeTintColor="#4ECBFC" // 选中tabbar图标的颜色
             // inactiveTintColor="#aaa" // 未选中tabbar图标的颜色
             // tabStyle={{ height: 20 }}
@@ -100,7 +105,7 @@ const RouteMap = (props) => {
             <Scene title="作业" key="homework" component={Homework} />
           </Tabs>
         </Stack>
-        <Scene initial key="theme" title="主题" component={Theme} />
+        <Scene key="theme" title="主题" component={Theme} />
         <Stack key="demo">
           <Scene
             // title="demo"
@@ -132,8 +137,16 @@ const RouteMap = (props) => {
   );
 };
 
+RouteMap.defaultProps = {
+
+};
+
 RouteMap.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  theme: PropTypes.shape({
+    brand_primary: PropTypes.string,
+    brand_primary_similar: PropTypes.string,
+  }).isRequired,
 };
 
 export default RouteMap;

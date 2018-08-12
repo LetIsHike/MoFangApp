@@ -10,4 +10,6 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 //   'Attempt to read an array index',
 ]);
 
+// console.disableYellowBox = true; // 关闭全部黄色警告
+
 AppRegistry.registerComponent('RNDemo', () => App);

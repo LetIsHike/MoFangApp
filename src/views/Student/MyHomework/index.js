@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -20,6 +21,7 @@ export default class MyHomework extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Button title="go theme" onPress={Actions.theme} />
         <Text>
 我的作业
         </Text>

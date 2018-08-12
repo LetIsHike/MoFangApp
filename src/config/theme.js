@@ -1,28 +1,5 @@
 import { themeKey } from '../constants/stroage';
-
-export const ThemeFlags = {
-  Default: '#2196F3',
-  Red: '#F44336',
-  Pink: '#E91E63',
-  Purple: '#9C27B0',
-  DeepPurple: '#673AB7',
-  Indigo: '#3F51B5',
-  Blue: '#2196F3',
-  LightBlue: '#03A9F4',
-  Cyan: '#00BCD4',
-  Teal: '#009688',
-  Green: '#4CAF50',
-  LightGreen: '#8BC34A',
-  Lime: '#CDDC39',
-  Yellow: '#FFEB3B',
-  Amber: '#FFC107',
-  Orange: '#FF9800',
-  DeepOrange: '#FF5722',
-  Brown: '#795548',
-  Grey: '#9E9E9E',
-  BlueGrey: '#607D8B',
-  Black: '#000000',
-};
+import theme from '../components/style/theme';
 
 export default class Theme {
   // 获取缓存的主题配置
@@ -30,11 +7,11 @@ export default class Theme {
     return storage.Load({ key: themeKey })
       .then((ret) => {
         if (ret) {
-          return ret;
+          return JSON.parse(ret);
         }
-        return this.saveTheme(ThemeFlags.Default);
+        return this.saveTheme(theme.Default);
       })
-      .catch(() => this.saveTheme(ThemeFlags.Default));
+      .catch(() => this.saveTheme(theme.Default));
   }
 
   /**
@@ -43,7 +20,7 @@ export default class Theme {
   saveTheme(themeFlag) {
     return storage.Save({
       key: themeKey,
-      data: themeFlag,
+      data: JSON.stringify(themeFlag),
     })
       .then(() => themeFlag)
       .catch(e => console.log('保存主题失败'));

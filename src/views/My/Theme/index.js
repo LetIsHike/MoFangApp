@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import Config from '../../../config';
+import PropTypes from 'prop-types';
+import theme from '../../../components/style/theme';
 import styles from './style';
 import ThemeClass from '../../../config/theme';
 import { ChangeTheme } from '../../../actions/config';
@@ -23,7 +24,7 @@ export default class Theme extends Component {
    * 创建主题item
    */
   renderThemeItem = (item) => {
-    const currentColor = Config.ThemeFlags[item];
+    const themeFlags = theme[item];
     const { dispatch } = this.props;
     return (
       <TouchableOpacity
@@ -31,14 +32,14 @@ export default class Theme extends Component {
         activeOpacity={0.3}
         onPress={
           () => {
-            this.theme.saveTheme(currentColor).then((res) => {
+            this.theme.saveTheme(themeFlags).then((res) => {
               dispatch(ChangeTheme(res));
               Actions.student();
             });
           }
         }
       >
-        <View style={[styles.themeItem, { backgroundColor: currentColor }]}>
+        <View style={[styles.themeItem, { backgroundColor: themeFlags.brand_primary }]}>
           <Text style={styles.themeText}>{item}</Text>
         </View>
       </TouchableOpacity>
@@ -49,7 +50,7 @@ export default class Theme extends Component {
    * 创建主题列表
    */
   renderThemeList = () => (
-    Object.keys(Config.ThemeFlags).map(item => this.renderThemeItem(item))
+    Object.keys(theme).map(item => this.renderThemeItem(item))
   )
 
   render() {
@@ -64,3 +65,11 @@ export default class Theme extends Component {
     );
   }
 }
+
+Theme.defaultProps = {
+  dispatch: () => {},
+};
+
+Theme.propTypes = {
+  dispatch: PropTypes.func,
+};

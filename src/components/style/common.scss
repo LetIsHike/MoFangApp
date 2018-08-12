@@ -1,0 +1,174 @@
+// 公共样式
+
+$brandPrimary: #108ee9;
+$brandPrimaryTap: #1284d6;
+
+// 文字色
+$color-text-base: rgba(0, 0, 0, 0.87);                  // 基本
+$color-text-base-inverse: rgba(255, 255, 255, 0.87);          // 基本 - 反色
+$color-text-secondary: rgba(0, 0, 0, 0.26);             // 辅助色
+$color-text-secondary-inverse: rgba(255, 255, 255, 0.26);     // 辅助色 - 反色
+$color-text-longText: rgba(255, 255, 255, 0.54);  // 长文本 - 反色
+$color-text-longText-inverse: rgba(0, 0, 0, 0.54);  // 长文本 - 反色
+
+// 背景色
+$fill-base: #fff;                           // 组件默认背景
+$fill-body: #f5f5f9;                        // 页面背景 
+$fill-tap: #ddd;                            // 组件默认背景 - 按下
+$fill-disabled: #ddd;                       // 通用失效背景
+$fill-mask: rgba(0, 0, 0, 0.4);              // 遮罩背景
+$color-icon-base: #ccc;                      // 许多小图标的背景，比如一些小圆点，加减号
+$fill-grey: #f7f7f7;
+
+// 透明度
+$opacity-disabled: 0.3;   // switch checkbox radio 等组件禁用的透明度
+
+// 字体尺寸
+$font-size-remark: 12px; // 备注
+$font-size-tip: 14px; //提示
+$font-size-long: 15px; // 长文
+$font-size-tractate: 16px; // 短文
+$font-size-subhead: 17px; // 小标题
+$font-size-caption: 20px; // 标题
+
+// 圆角
+$radius-xs: 2;
+$radius-sm: 3;
+$radius-md: 5;
+$radius-lg: 7;
+$radius-circle: 50%;
+
+// 边框尺寸
+$border-width-sm: 1PX;
+$border-width-md: 1PX;
+$border-width-lg: 2;
+
+// 间距
+// 水平间距
+$h-spacing-sm: 5;
+$h-spacing-md: 8;
+$h-spacing-lg: 15;
+
+// 垂直间距
+$v-spacing-xs: 3;
+$v-spacing-sm: 6;
+$v-spacing-md: 9;
+$v-spacing-lg: 15;
+$v-spacing-xl: 21;
+
+// 高度
+// ---
+$line-height-base: 1;           // 单行行高
+$line-height-paragraph: 1.5;    // 多行行高
+
+// 图标尺寸
+// ---
+$icon-size-xxs: 15;
+$icon-size-xs: 18;
+$icon-size-sm: 21;
+$icon-size-md: 22;       // 导航条上的图标、grid的图标大小
+$icon-size-lg: 36;
+
+// 动画缓动
+// ---
+$ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
+
+// 组件变量
+// ---
+
+$actionsheet-item-height: 50;
+$actionsheet-item-font-size: 18;
+
+// button
+$button-height: 47;
+$button-font-size: 18;
+
+$button-height-sm: 30;
+$button-font-size-sm: 13;
+
+$primary-button-fill: $brand-primary;
+$primary-button-fill-tap: $brand-primary-tap;
+
+$ghost-button-color: $brand-primary;    // 同时应用于背景、文字颜色、边框色
+$ghost-button-fill-tap: fade($brand-primary, 60%);
+
+$warning-button-fill: #e94f4f;
+$warning-button-fill-tap: #d24747;
+
+$link-button-fill-tap: #ddd;
+$link-button-font-size: 16;
+
+// menu
+$menu-multi-select-btns-height: $button-height;
+
+// modal
+$modal-font-size-heading: 18;
+$modal-button-font-size: 18; // 按钮字号
+$modal-button-height: 50; // 按钮高度
+
+// list
+$list-title-height: 30;
+$list-item-height-sm: 35;
+$list-item-height: 44;
+
+// input
+$input-label-width: 17;       // InputItem、TextareaItem 文字长度基础值
+$input-font-size: 17;
+$input-color-icon: #ccc; // input clear icon 的背景色
+$input-color-icon-tap: $brand-primary;
+
+// tabs
+$tabs-color: $brand-primary;
+$tabs-height: 43.5;
+$tabs-font-size-heading: 15;
+$tabs-ink-bar-height: $border-width-lg;
+
+// // segmented-control
+// $segmented-control-color: $brand-primary;  // 同时应用于背景、文字颜色、边框色
+// $segmented-control-height: 27;
+// $segmented-control-fill-tap: fade($brand-primary, 0.1);
+
+// // tab-bar
+// $tab-bar-fill: #ebeeef;
+// $tab-bar-height: 50;
+
+// // toast
+// $toast-fill: rgba(58, 58, 58, 0.9); // toast, activity-indicator 的背景颜色
+
+// // search-bar
+// $search-bar-fill: #efeff4;
+// $search-bar-height: 44;
+// $search-bar-input-height: 28;
+// $search-bar-font-size: 15;
+// $search-color-icon: #bbb; // input search icon 的背景色
+
+// // notice-bar
+// $notice-bar-fill: #fefcec;
+// $notice-bar-height: 36;
+// $notice-bar-color: #f76a24;
+
+// // switch
+// $switch-fill: #4dd865;
+// $switch-fill-android: $brand-primary;
+
+// // tag
+// $tag-height: 25;
+// $tag-height-sm: 15;
+// $tag-color: $brand-primary;
+
+// // keyboard
+// $keyboard-confirm-color: $brand-primary;
+// $keyboard-confirm-tap-color: $brand-primary-tap;
+
+// // picker
+// $option-height: 42;           // picker 标题的高度
+
+// // z-index
+// $progress-zindex: 2000;
+// $popover-zindex: 1999;
+// $toast-zindex: 1999;
+// $action-sheet-zindex: 1000; // actonsheet 会放到 popup / modal 中
+// $picker-zindex: 1000;
+// $popup-zindex: 999;
+// $modal-zindex: 999; // modal.alert 应该最大，其他应该较小
+// $tabs-pagination-zindex: 999;
