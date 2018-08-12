@@ -5,12 +5,7 @@ export default class Theme {
   // 获取缓存的主题配置
   getTheme() {
     return storage.Load({ key: themeKey })
-      .then((ret) => {
-        if (ret) {
-          return JSON.parse(ret);
-        }
-        return this.saveTheme(theme.Default);
-      })
+      .then(ret => JSON.parse(ret))
       .catch(() => this.saveTheme(theme.Default));
   }
 
