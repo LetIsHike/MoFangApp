@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { equals } from 'ramda';
+import SplashScreen from 'react-native-splash-screen';
 import Theme from './config/theme';
 import { ChangeTheme } from './actions/config';
 
@@ -18,44 +18,33 @@ import { ChangeTheme } from './actions/config';
 export default class Setup extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      color: 'transparent',
-    };
     this.theme = new Theme();
   }
 
-  componentWillMount() {
-    this.initialTheme();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.changeTheme(nextProps);
+  async componentDidMount() {
+    await this.initialTheme();
+    SplashScreen.hide();
   }
 
   initialTheme = () => {
     const { doChangeTheme } = this.props;
     // 读取缓存中的主题，并保存在store
-    this.theme.getTheme().then((res) => {
+    return this.theme.getTheme().then((res) => {
       doChangeTheme(res);
     });
   }
 
-  changeTheme = (nextProps) => {
-    const { theme } = this.props;
-    const newTheme = nextProps.theme;
-    // 判断主题是否变化，若变化则重新应用主题
-    if (!equals(newTheme, theme)) {
-      this.setState({ color: newTheme.brand_primary });
-    }
-  }
-
   render() {
-    const { color } = this.state;
-    const { children } = this.props;
+    const {
+      children,
+      theme: {
+        brand_primary,
+      },
+    } = this.props;
     return (
       <Fragment>
         <StatusBar
-          backgroundColor={color}
+          backgroundColor={brand_primary}
           animated
         />
         {children}
@@ -66,7 +55,9 @@ export default class Setup extends Component {
 
 Setup.defaultProps = {
   doChangeTheme: () => {},
-  theme: {},
+  theme: {
+    brand_primary: 'transparent',
+  },
 };
 
 Setup.propTypes = {
