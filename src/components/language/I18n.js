@@ -1,5 +1,6 @@
 import I18n, { getLanguages } from 'react-native-i18n';
-import DeviceInfo from 'react-native-device-info';
+// import DeviceInfo from 'react-native-device-info';
+// import Language from '../../config/language';
 import en from './en';
 import zh from './zh';
 
@@ -11,3 +12,5 @@ I18n.translations = {
   en,
   zh,
 };
+
+export default { I18n, getLanguages };

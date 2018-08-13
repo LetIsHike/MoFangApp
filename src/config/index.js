@@ -4,8 +4,10 @@
 
 import Api from './api';
 import Theme from './theme';
+import Language from './Language';
 
 export default {
   Api,
   Theme,
+  Language,
 };
