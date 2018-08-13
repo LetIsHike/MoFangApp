@@ -45,13 +45,13 @@ const RouteMap = (props) => {
         hideNavBar
         key="modal"
       >
-        <Stack key="welcome">
+        <Stack key="welcome" initial>
           <Scene title="欢迎页面" hideNavBar key="welcome" component={Welcome} />
         </Stack>
         <Stack title="登陆" key="account">
           <Scene key="login" hideNavBar component={Login} />
         </Stack>
-        <Stack key="student" hideNavBar initial>
+        <Stack key="student" hideNavBar>
           <Tabs
             key="student-tabs"
             activeBackgroundColor={brand_primary_similar} // 选中tabbar的背景色

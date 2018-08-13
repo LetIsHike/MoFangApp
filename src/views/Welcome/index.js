@@ -30,7 +30,7 @@ class Welcome extends React.Component {
         }
       }
     }).catch(() => {
-      // Actions.student();
+      Actions.student();
       // Actions.login();
     });
   }
