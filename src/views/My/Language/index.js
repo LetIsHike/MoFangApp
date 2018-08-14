@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
 } from 'react-native';
-import { I18n } from '../../../components/language/I18n';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ChangeLanguage } from '../../../actions/config';
+import LanguageClass from '../../../config/language';
+import I18nText from '../../../components/I18nText';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,20 +16,35 @@ const styles = StyleSheet.create({
   },
 });
 
+@connect(null, dispatch => ({
+  doChangeLanguage: bindActionCreators(ChangeLanguage, dispatch),
+}))
 export default class Language extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.language = new LanguageClass();
   }
 
   render() {
+    const { doChangeLanguage } = this.props;
     return (
       <View style={styles.container}>
-        <TouchableOpacity>
-          <Text>中文{I18n.t('my')}</Text>
+        <TouchableOpacity onPress={() => {
+          this.language.setAndSaveLanguage('en')
+            .then(doChangeLanguage);
+          setTimeout(Actions.examRecords, 1000);
+        }}
+        >
+          <I18nText>changeToEnglish</I18nText>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>英文</Text>
+        <TouchableOpacity onPress={() => {
+          this.language.setAndSaveLanguage('zh')
+            .then(doChangeLanguage);
+          setTimeout(Actions.examRecords, 1000);
+        }}
+        >
+          <I18nText>changeToChinese</I18nText>
         </TouchableOpacity>
       </View>
     );

@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import {
+  InitialConfog,
   ChangeTheme,
   ChangeLanguage,
 } from '../actions/config';
@@ -19,6 +20,17 @@ export default handleActions({
     return {
       ...state,
       language: action.payload,
+    };
+  },
+  [InitialConfog](state, action) {
+    const {
+      theme,
+      language,
+    } = action.payload;
+    return {
+      ...state,
+      theme,
+      language,
     };
   },
 }, initialState);

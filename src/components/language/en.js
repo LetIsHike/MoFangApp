@@ -1,4 +1,6 @@
 
 export default {
-  my: 'my',
+  changeToEnglish: 'change to english',
+  changeToChinese: 'change to chinese',
+  jump: 'Jump',
 };

@@ -5,6 +5,7 @@ import {
   View,
   Button,
 } from 'react-native';
+import Language from '../../My/Language';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,7 @@ export default class MyHomework extends Component {
     return (
       <View style={styles.container}>
         <Button title="go theme" onPress={Actions.theme} />
+        <Language />
         <Text>
 我的作业
         </Text>

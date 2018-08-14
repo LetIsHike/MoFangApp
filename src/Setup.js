@@ -2,18 +2,22 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
   StatusBar,
+  Text,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import SplashScreen from 'react-native-splash-screen';
 import Theme from './config/theme';
 import Language from './config/language';
-import { ChangeTheme } from './actions/config';
+import { InitialConfog } from './actions/config';
 
 @connect(
-  state => ({ theme: state.config.theme }),
+  state => ({
+    theme: state.config.theme,
+    language: state.config.language,
+  }),
   dispatch => ({
-    doChangeTheme: bindActionCreators(ChangeTheme, dispatch),
+    doInitialConfog: bindActionCreators(InitialConfog, dispatch),
   }),
 )
 export default class Setup extends Component {
@@ -24,25 +28,28 @@ export default class Setup extends Component {
   }
 
   async componentDidMount() {
-    await this.initialTheme();
-    await this.initialLanguage();
+    await this.initialConfig();
     SplashScreen.hide();
   }
 
-  initialTheme = () => {
-    const { doChangeTheme } = this.props;
-    // 读取缓存中的主题，并保存在store
-    return this.theme.getTheme().then((res) => {
-      doChangeTheme(res);
-    });
+  initialConfig = () => {
+    const { doInitialConfog } = this.props;
+    return (
+      Promise.all([
+        this.initialTheme(),
+        this.initialLanguage(),
+      ])
+        .then((arr) => {
+          const [theme, language] = arr;
+          doInitialConfog({ theme, language });
+        })
+        .catch(e => console.log('初始化配置失败：', e))
+    );
   }
 
-  initialLanguage = () => {
-    console.log(41);
-    return this.language().then((res) => {
-      console.log(43, res);
-    });
-  }
+  initialTheme = () => this.theme.getTheme().then(res => res)
+
+  initialLanguage = () => this.language.getLanguage().then(res => res)
 
   render() {
     const {
@@ -57,6 +64,7 @@ export default class Setup extends Component {
           backgroundColor={brand_primary}
           animated
         />
+        <Text>{this.props.language}</Text>
         {children}
       </Fragment>
     );
@@ -64,14 +72,14 @@ export default class Setup extends Component {
 }
 
 Setup.defaultProps = {
-  doChangeTheme: () => {},
+  doInitialConfog: () => {},
   theme: {
     brand_primary: 'transparent',
   },
 };
 
 Setup.propTypes = {
-  doChangeTheme: PropTypes.func,
+  doInitialConfog: PropTypes.func,
   theme: PropTypes.object,
   children: PropTypes.element.isRequired,
 };
