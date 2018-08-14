@@ -87,7 +87,7 @@ const RouteMap = (props) => {
               navigationBarStyle={styles.examRecords_navigationBarStyle}
             >
               <Scene
-                key="myHomework"
+                key="examRecords"
                 component={ExamRecords}
                 title="选择日期范围"
               />
