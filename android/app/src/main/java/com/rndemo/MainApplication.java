@@ -4,6 +4,7 @@ import android.app.Application;
 import android.webkit.WebView; 
 
 import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.horcrux.svg.SvgPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNDeviceInfo(),
             new RNI18nPackage(),
             new SvgPackage(),
             new SplashScreenReactPackage(),
