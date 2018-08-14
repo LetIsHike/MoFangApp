@@ -5,6 +5,7 @@ import {
   Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import I18nText from '../I18nText';
 import CIcon from '../Icon';
 
 const TabBarIcon = (props) => {
@@ -42,14 +43,14 @@ const TabBarIcon = (props) => {
       {
         renderIcon()
       }
-      <Text
+      <I18nText
         style={{
           color: focused ? '#ffffff' : '#000000',
           fontSize: 12,
         }}
       >
         {title}
-      </Text>
+      </I18nText>
     </View>
   );
 };

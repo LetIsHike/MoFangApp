@@ -12,15 +12,13 @@ import {
   Reducer,
 } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import MyHomework from './views/Student/MyHomework';
-import ExamRecords from './views/Student/ExamRecords';
-import HomeworkRecords from './views/Student/HomeworkRecords';
-import WrongNotes from './views/Student/WrongNotes';
-import Login from './views/Account/Login';
-import Homework from './views/Teacher/Homework';
+import Login from './views/Auth/Login';
+import Home from './views/Home';
+import Activity from './views/Activity';
+import Itinerary from './views/Itinerary';
+import My from './views/My';
 import TabBarIcon from './components/TabBarIcon';
 import Welcome from './views/Welcome';
-import Theme from './views/My/Theme';
 import Demo from './views/Demo';
 // import SvgUri from './components/Svg';
 import homework from './public/img/homework.png';
@@ -29,8 +27,8 @@ import styles from './router.scss';
 const RouteMap = (props) => {
   const {
     theme: {
-      brand_primary,
-      brand_primary_similar,
+      brandPrimary,
+      brandPrimarySimilar,
     },
   } = props;
   return (
@@ -45,17 +43,17 @@ const RouteMap = (props) => {
         hideNavBar
         key="modal"
       >
-        <Stack key="welcome" initial>
-          <Scene title="欢迎页面" hideNavBar key="welcome" component={Welcome} />
+        <Stack key="Welcome" initial>
+          <Scene title="欢迎页面" hideNavBar key="WelcomeKey" component={Welcome} />
         </Stack>
-        <Stack title="登陆" key="account">
-          <Scene key="login" hideNavBar component={Login} />
+        <Stack title="登陆" key="Auth">
+          <Scene key="Login" hideNavBar component={Login} />
         </Stack>
-        <Stack key="student" hideNavBar>
+        <Stack key="TabsStack" hideNavBar>
           <Tabs
-            key="student-tabs"
-            activeBackgroundColor={brand_primary_similar} // 选中tabbar的背景色
-            inactiveBackgroundColor={brand_primary} // 未选中tabbar的背景色
+            key="Tabs"
+            activeBackgroundColor={brandPrimarySimilar} // 选中tabbar的背景色
+            inactiveBackgroundColor={brandPrimary} // 未选中tabbar的背景色
             // activeTintColor="#4ECBFC" // 选中tabbar图标的颜色
             // inactiveTintColor="#aaa" // 未选中tabbar图标的颜色
             // tabStyle={{ height: 20 }}
@@ -69,58 +67,57 @@ const RouteMap = (props) => {
             icon={TabBarIcon}
           >
             <Stack
-              title="微信"
-              key="myHomework1"
+              title="Home"
+              key="Home"
+              titleStyle={styles.examRecords_titleStyle}
+              navigationBarStyle={styles.examRecords_navigationBarStyle}
+            >
+              <Scene key="HomeKey" component={Home} />
+            </Stack>
+            <Stack
+              title="Activity"
+              key="Activity"
               image={homework}
               selectedImage="bofang"
               hideNavBar
             >
-              <Scene key="myHomework" component={MyHomework} />
+              <Scene key="ActivityKey" component={Activity} />
             </Stack>
             <Stack
-              title="通讯录"
-              key="examRecords"
+              title="Itinerary"
+              key="Itinerary"
               // image={<SvgUri height="40" width="40" source="examBook" />}
               selectedImage="bofang"
               image={homework}
-              titleStyle={styles.examRecords_titleStyle}
-              navigationBarStyle={styles.examRecords_navigationBarStyle}
+              hideNavBar
             >
-              <Scene
-                key="examRecords"
-                component={ExamRecords}
-                title="选择日期范围"
-              />
+              <Scene key="ItineraryKey" component={Itinerary} title="选择日期范围" />
             </Stack>
-            <Stack title="发现" key="homeworkRecords1">
-              <Scene key="homeworkRecords" component={HomeworkRecords} />
-            </Stack>
-            <Stack title="我" key="wrongNotes1">
-              <Scene key="wrongNotes" component={WrongNotes} />
+            <Stack
+              title="My"
+              key="My"
+              hideNavBar
+            >
+              <Scene key="MyKey" component={My} />
             </Stack>
           </Tabs>
         </Stack>
-        <Stack key="teacher">
-          <Tabs key="teacher-tabs">
-            <Scene title="作业" key="homework" component={Homework} />
-          </Tabs>
-        </Stack>
-        <Scene key="theme" title="主题" component={Theme} />
-        <Stack key="demo">
+        <Stack key="Demo">
+          {/* 只要导航栏自定义内容页面就会卡死，比如renderTitle，renderLeftButton */}
           <Scene
             // title="demo"
-            renderTitle={(
-              <View style={styles.demo_renderTitle_titleBox}>
-                <Text style={styles.demo_renderTitle_title}>自定义标题</Text>
-              </View>
-            )}
-            key="demo"
+            // renderTitle={(
+            //   <View style={styles.demo_renderTitle_titleBox}>
+            //     <Text style={styles.demo_renderTitle_title}>自定义标题</Text>
+            //   </View>
+            // )}
+            key="DemoKey"
             component={Demo}
-            renderLeftButton={(
-              <View style={styles.demo_renderLeftButton_box}>
-                <Text style={styles.demo_renderLeftButton_text}>111</Text>
-              </View>
-            )}
+            // renderLeftButton={(
+            //   <View style={styles.demo_renderLeftButton_box}>
+            //     <Text style={styles.demo_renderLeftButton_text}>111</Text>
+            //   </View>
+            // )}
             leftTitle="回退"
             rightTitle="前进"
             onLeft={() => console.log('onLeft')}
@@ -144,8 +141,8 @@ RouteMap.defaultProps = {
 RouteMap.propTypes = {
   dispatch: PropTypes.func.isRequired,
   theme: PropTypes.shape({
-    brand_primary: PropTypes.string,
-    brand_primary_similar: PropTypes.string,
+    brandPrimary: PropTypes.string,
+    brandPrimarySimilar: PropTypes.string,
   }).isRequired,
 };
 

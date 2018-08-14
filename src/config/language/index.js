@@ -1,6 +1,6 @@
 import DeviceInfo from 'react-native-device-info';
-import { languageKey } from '../constants/stroage';
-import I18n from '../components/language/I18n';
+import { languageKey } from '../../constants/stroage';
+import I18n from './I18n';
 
 export default class Language {
   // 从缓存中获取语言

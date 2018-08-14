@@ -20,7 +20,7 @@ class Welcome extends React.Component {
         } = JSON.parse(userinfo);
         switch (currentSchoolRole) {
           case 'STUDENT':
-            Actions.student();
+            Actions.TabsStack();
             break;
           case 'TEACHER':
             Actions.teacher();
@@ -30,8 +30,7 @@ class Welcome extends React.Component {
         }
       }
     }).catch(() => {
-      Actions.student();
-      // Actions.login();
+      Actions.TabsStack();
     });
   }
 

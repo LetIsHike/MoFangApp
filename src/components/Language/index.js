@@ -6,9 +6,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ChangeLanguage } from '../../../actions/config';
-import LanguageClass from '../../../config/language';
-import I18nText from '../../../components/I18nText';
+import PropTypes from 'prop-types';
+import { ChangeLanguage } from '../../actions/config';
+import LanguageClass from '../../config/language';
+import I18nText from '../I18nText';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +34,6 @@ export default class Language extends Component {
         <TouchableOpacity onPress={() => {
           this.language.setAndSaveLanguage('en')
             .then(doChangeLanguage);
-          setTimeout(Actions.examRecords, 1000);
         }}
         >
           <I18nText>changeToEnglish</I18nText>
@@ -41,7 +41,6 @@ export default class Language extends Component {
         <TouchableOpacity onPress={() => {
           this.language.setAndSaveLanguage('zh')
             .then(doChangeLanguage);
-          setTimeout(Actions.examRecords, 1000);
         }}
         >
           <I18nText>changeToChinese</I18nText>
@@ -50,3 +49,11 @@ export default class Language extends Component {
     );
   }
 }
+
+Language.defaultProps = {
+  doChangeLanguage: () => {},
+};
+
+Language.propTypes = {
+  doChangeLanguage: PropTypes.func,
+};

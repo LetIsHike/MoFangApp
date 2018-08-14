@@ -61,7 +61,7 @@ export default class Login extends Component {
         switch (currentSchoolRole) {
           case 'STUDENT':
             this.savaToken(data).then(() => {
-              Actions.student();
+              Actions.TabsStack();
             });
             break;
           case 'TEACHER':

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class HomeworkList extends Component {
+export default class Test3 extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -21,7 +21,7 @@ export default class HomeworkList extends Component {
     return (
       <View style={styles.container}>
         <Text>
-作业列表
+我的
         </Text>
       </View>
     );

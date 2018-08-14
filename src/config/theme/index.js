@@ -1,5 +1,5 @@
-import { themeKey } from '../constants/stroage';
-import theme from '../components/style/theme';
+import { themeKey } from '../../constants/stroage';
+import theme from './theme';
 
 export default class Theme {
   // 获取缓存的主题配置

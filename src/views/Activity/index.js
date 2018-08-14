@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Test3 extends Component {
+export default class MyHomework extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -20,9 +21,7 @@ export default class Test3 extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-错题本
-        </Text>
+        <Text>活动</Text>
       </View>
     );
   }

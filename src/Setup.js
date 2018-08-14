@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
   StatusBar,
-  Text,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -55,16 +54,15 @@ export default class Setup extends Component {
     const {
       children,
       theme: {
-        brand_primary,
+        brandPrimary,
       },
     } = this.props;
     return (
       <Fragment>
         <StatusBar
-          backgroundColor={brand_primary}
+          backgroundColor={brandPrimary}
           animated
         />
-        <Text>{this.props.language}</Text>
         {children}
       </Fragment>
     );
@@ -74,7 +72,7 @@ export default class Setup extends Component {
 Setup.defaultProps = {
   doInitialConfog: () => {},
   theme: {
-    brand_primary: 'transparent',
+    brandPrimary: 'transparent',
   },
 };
 

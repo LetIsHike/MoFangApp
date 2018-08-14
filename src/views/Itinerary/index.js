@@ -3,9 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
 } from 'react-native';
-import I18nText from '../../../components/I18nText';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,13 +20,7 @@ export default class Test3 extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>考试记录</Text>
-        <TouchableOpacity onPress={() => {
-          setTimeout(Actions.myHomework, 500);
-        }}
-        >
-          <I18nText>jump</I18nText>
-        </TouchableOpacity>
+        <Text>路线</Text>
       </View>
     );
   }

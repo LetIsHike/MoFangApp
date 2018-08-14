@@ -3,7 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
+import { Actions } from '../../../node_modules/react-native-router-flux';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,9 +22,12 @@ export default class Test3 extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-作业记录
-        </Text>
+        <Text>首页</Text>
+        <TouchableOpacity
+          onPress={Actions.Demo}
+        >
+          <Text>demo</Text>
+        </TouchableOpacity>
       </View>
     );
   }

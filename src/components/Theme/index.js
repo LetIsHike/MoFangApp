@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import theme from '../../../components/style/theme';
+import theme from '../../config/theme/theme';
 import styles from './style';
-import ThemeClass from '../../../config/theme';
-import { ChangeTheme } from '../../../actions/config';
+import ThemeClass from '../../config/theme';
+import { ChangeTheme } from '../../actions/config';
 
 @connect()
 export default class Theme extends Component {
@@ -34,7 +34,6 @@ export default class Theme extends Component {
           () => {
             this.theme.saveTheme(themeFlags).then((res) => {
               dispatch(ChangeTheme(res));
-              Actions.student();
             });
           }
         }

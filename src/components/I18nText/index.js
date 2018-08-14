@@ -3,7 +3,7 @@ import {
   Text,
 } from 'react-native';
 import { connect } from 'react-redux';
-import I18n from '../language/I18n';
+import I18n from '../../config/language/I18n';
 
 const I18nText = ({ children }) => (
   <Text>{I18n.t(children)}</Text>
