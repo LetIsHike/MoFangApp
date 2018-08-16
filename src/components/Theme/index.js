@@ -38,7 +38,7 @@ export default class Theme extends Component {
           }
         }
       >
-        <View style={[styles.themeItem, { backgroundColor: themeFlags.brand_primary }]}>
+        <View style={[styles.themeItem, { backgroundColor: themeFlags.brandPrimary }]}>
           <Text style={styles.themeText}>{item}</Text>
         </View>
       </TouchableOpacity>
