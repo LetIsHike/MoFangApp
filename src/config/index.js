@@ -4,7 +4,7 @@
 
 import Api from './api';
 import Theme from './theme';
-import Language from './Language';
+import Language from './language';
 
 export default {
   Api,
