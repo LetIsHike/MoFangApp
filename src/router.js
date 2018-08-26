@@ -12,7 +12,7 @@ import {
   Reducer,
 } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import Login from './views/Auth/Login';
+import Login from './views/Account/Login';
 import Home from './views/Home';
 import Activity from './views/Activity';
 import Itinerary from './views/Itinerary';
@@ -43,10 +43,10 @@ const RouteMap = (props) => {
         hideNavBar
         key="modal"
       >
-        <Stack key="Welcome" initial>
+        <Stack key="Welcome">
           <Scene title="欢迎页面" hideNavBar key="WelcomeKey" component={Welcome} />
         </Stack>
-        <Stack title="登陆" key="Auth">
+        <Stack title="登陆" key="Account" initial>
           <Scene key="Login" hideNavBar component={Login} />
         </Stack>
         <Stack key="TabsStack" hideNavBar>
