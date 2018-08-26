@@ -9,7 +9,6 @@ function apiUrl(url) {
   } else if (url.charAt(0) === '/') {
     return `${Config.Api.baseApi}/${url}`;
   }
-  console(Config);
   return Config.Api.baseApi + url;
 }
 
@@ -35,9 +34,9 @@ const Fetch = {
  * param {Boolean} mock 是否携带token
  * param {Object} headerParams 请求头设置
  */
-  fetch(url, params = {}, method = 'get', type = '', mock = false, headerParams = {}, dataJson) {
+  fetch(url, params = {}, method = 'get', type = '', dataJson = true, headerParams = {}) {
     const headers = {};
-    if (method === 'post') {
+    if (method === 'post' && type === 'json') {
       headers.Accept = 'application/json';
       headers['Content-Type'] = 'application/json';
     }
@@ -72,15 +71,16 @@ const Fetch = {
       .then(errCode)
       .catch(err => new Error(err));
   },
-  get(url, params = {}, dataJson = true, mock = false, headerParams = {}) {
+  get(url, params = {}, dataJson = true, headerParams = {}) {
     let _url = url;
     if (!isEmpty(params)) {
       _url = url + (/\?/.test(url) ? '&' : '?') + qs.stringify(params);
     }
-    return this.fetch(apiUrl(_url), {}, 'get', '', mock, headerParams, dataJson);
+    return this.fetch(apiUrl(_url), {}, 'get', '', dataJson, headerParams);
   },
-  post(url, params, dataJson = true, type = 'json', mock = false) {
-    return this.fetch(apiUrl(url), params, 'post', type, mock, dataJson);
+  post(url, params, dataJson = true, type = 'json', headerParams) {
+    console.log(83, params);
+    return this.fetch(apiUrl(url), params, 'post', type, dataJson, headerParams);
   },
   put(url, params, dataJson = true, type = '') { return this.fetch(apiUrl(url), params, 'put', type, dataJson); },
   delete(url, params, dataJson = true) {

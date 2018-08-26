@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import md5 from 'md5';
 import {
   Button,
   Text,
@@ -8,6 +7,7 @@ import {
   InputItem,
 } from 'antd-mobile-rn';
 import { token } from '../../../constants/stroage';
+import { loginError, loginSuccess } from '../../../constants/fetch';
 
 export default class Login extends Component {
   constructor(props) {
@@ -39,12 +39,17 @@ export default class Login extends Component {
       username,
       password,
     } = this.state;
-    Fetch.post('/user/login', {
-      username,
-      password,
-    }, false)
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    Fetch.post('/user/login', formData, false, 'file', {
+      'Content-Type': 'multipart/form-data',
+    })
       .then((res) => {
-        console.log('47:login', res);
+        console.log(47, res);
+        const a = res.indexOf(loginError);
+        console.log(50, a);
+
         this.setState({
           fetchData: res,
         });
