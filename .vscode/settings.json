@@ -1,0 +1,42 @@
+{
+    "files.autoSave": "afterDelay",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.autofetch": true,
+    "files.eol": "\n",
+    "editor.renderControlCharacters": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "jsx",
+            "autoFix": true
+        },
+        {
+            "language": "js",
+            "autoFix": true
+        },
+        {
+            "language": "css",
+            "autoFix": true
+        },
+        {
+            "language": "scss",
+            "autoFix": true
+        },
+        {
+            "language": "sass",
+            "autoFix": true
+        },
+        {
+            "language": "less",
+            "autoFix": true
+        }
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "workbench.colorTheme": "Monokai",
+}
