@@ -39,38 +39,12 @@ export default class Login extends Component {
       username,
       password,
     } = this.state;
-    Fetch.post('https://test-cjyun-api.ecaicn.com/unlogin/login', {
-      userName: username,
-      password: md5(password),
-    })
+    Fetch.post('/user/login', {
+      username,
+      password,
+    }, false)
       .then((res) => {
-        const {
-          code,
-          data,
-        } = res;
-        if (!(code === 0)) return;
-        const {
-          userInfo: {
-            currentSchoolRole,
-          },
-        } = data;
-        /**
-         * 根据账号类型进行相应处理，课业只能使用学生或者教师账号登陆。
-         * 保存成功之后才进行相应跳转，否则提示重新登陆
-         */
-        switch (currentSchoolRole) {
-          case 'STUDENT':
-            this.savaToken(data).then(() => {
-              Actions.TabsStack();
-            });
-            break;
-          case 'TEACHER':
-            console.log('暂时只支持学生账号登陆');
-            break;
-          default:
-            console.log('请使用学生或老师账号登陆');
-        }
-
+        console.log('47:login', res);
         this.setState({
           fetchData: res,
         });

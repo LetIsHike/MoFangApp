@@ -7,9 +7,10 @@ function apiUrl(url) {
   if (typeof url !== 'string') {
     console.log('url只能为字符串类型');
   } else if (url.charAt(0) === '/') {
-    return `${Config.apiUrl}/${url}`;
+    return `${Config.Api.baseApi}/${url}`;
   }
-  return Config.apiUrl + url;
+  console(Config);
+  return Config.Api.baseApi + url;
 }
 
 const errCode = (json) => {
@@ -34,7 +35,7 @@ const Fetch = {
  * param {Boolean} mock 是否携带token
  * param {Object} headerParams 请求头设置
  */
-  fetch(url, params = {}, method = 'get', type = '', mock = false, headerParams = {}) {
+  fetch(url, params = {}, method = 'get', type = '', mock = false, headerParams = {}, dataJson) {
     const headers = {};
     if (method === 'post') {
       headers.Accept = 'application/json';
@@ -58,26 +59,36 @@ const Fetch = {
     }
 
     return fetch(url, options)
+      .then(res => res)
       .then(res => res.text())
-      .then(text => (text ? JSON.parse(text) : {}))
+      .then((text) => {
+        if (!dataJson) {
+          return text;
+        } if (text) {
+          return JSON.parse(text);
+        }
+        return {};
+      })
       .then(errCode)
       .catch(err => new Error(err));
   },
-  get(url, params = {}, mock = false, headerParams = {}) {
+  get(url, params = {}, dataJson = true, mock = false, headerParams = {}) {
     let _url = url;
     if (!isEmpty(params)) {
       _url = url + (/\?/.test(url) ? '&' : '?') + qs.stringify(params);
     }
-    return this.fetch(apiUrl(_url), {}, 'get', '', mock, headerParams);
+    return this.fetch(apiUrl(_url), {}, 'get', '', mock, headerParams, dataJson);
   },
-  post(url, params, type = 'json', mock = false) { return this.fetch(apiUrl(url), params, 'post', type, mock); },
-  put(url, params, type = '') { return this.fetch(apiUrl(url), params, 'put', type); },
-  delete(url, params) {
+  post(url, params, dataJson = true, type = 'json', mock = false) {
+    return this.fetch(apiUrl(url), params, 'post', type, mock, dataJson);
+  },
+  put(url, params, dataJson = true, type = '') { return this.fetch(apiUrl(url), params, 'put', type, dataJson); },
+  delete(url, params, dataJson = true) {
     let _url = url;
     if (!isEmpty(params)) {
       _url = url + (/\?/.test(url) ? '&' : '?') + qs.stringify(params);
     }
-    return this.fetch(apiUrl(_url), params, 'delete');
+    return this.fetch(apiUrl(_url), params, 'delete', dataJson);
   },
 };
 
