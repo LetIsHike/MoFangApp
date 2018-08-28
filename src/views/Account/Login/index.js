@@ -5,6 +5,7 @@ import {
   View,
   List,
   InputItem,
+  Toast,
 } from 'antd-mobile-rn';
 import { token } from '../../../constants/stroage';
 import { loginError, loginSuccess } from '../../../constants/fetch';
@@ -13,7 +14,6 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fetchData: {},
       password: '',
       username: '',
     };
@@ -47,12 +47,21 @@ export default class Login extends Component {
     })
       .then((res) => {
         console.log(47, res);
-        const a = res.indexOf(loginError);
-        console.log(50, a);
+        const err = res.indexOf(loginError);
+        const succ = res.indexOf(loginSuccess);
 
-        this.setState({
-          fetchData: res,
-        });
+        if (err !== -1) {
+          Toast.info('账号名或密码错误');
+          return;
+        }
+        if (succ !== -1) {
+          Toast.info('登陆成功', 1);
+          setTimeout(() => {
+            Actions.Home();
+          }, 1000);
+          return;
+        }
+        Toast.fail('未知错误');
       });
   }
 
@@ -63,9 +72,6 @@ export default class Login extends Component {
   }
 
   render() {
-    const {
-      fetchData,
-    } = this.state;
     return (
       <Fragment>
         <View>
@@ -103,22 +109,8 @@ export default class Login extends Component {
               登陆
               </Button>
             </List.Item>
-
-            <List.Item>
-              <Button
-                onClick={this.clearToken}
-                type="primary"
-              >
-                清除token
-              </Button>
-            </List.Item>
           </List>
         </View>
-        <Text>
-          {
-            JSON.stringify(fetchData)
-          }
-        </Text>
       </Fragment>
     );
   }

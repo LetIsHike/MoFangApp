@@ -62,11 +62,6 @@ class Logo extends Component {
         />
         <Button title="go to Login" onPress={() => Actions.account()} />
         <Button title="go to wrongNotes" onPress={() => Actions.wrongNotes()} />
-        <Button
-          onPress={this.clearToken}
-          type="primary"
-          title="清除token"
-        />
       </View>
     );
   }
